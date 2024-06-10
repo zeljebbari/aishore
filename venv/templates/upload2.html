@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <html> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document Upload</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #DFE0E2; /* Background color */
+                color: #333;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                max-width: 400px;
+                width: 100%;
+                margin: 20px;
+            }
+
+            h1 {
+                color: #1C5EFA; /* Primary color */
+            }
+
+            label {
+                font-weight: bold;
+                color: #23B5D3;
+            }
+
+            input[type="text"], input[type="file"], select {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0 20px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #1C5EFA; /* Primary color */
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            button:hover {
+                background-color: #23B5D3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Upload Document</h1>
+            <form action="/upload2" method="post" enctype="multipart/form-data">
+                <label for="entity_name">Entity Name:</label>
+                <input type="text" id="entity_name" name="entity_name" required>
+
+                <label for="borrower_name">Borrower Name:</label>
+                <input type="text" id="borrower_name" name="borrower_name" required>
+
+                <label for="doc_type">Document Type:</label>
+                <select id="doc_type" name="doc_type" required>
+                    <option value="" disabled selected>Select document type</option>
+                    <option value="ID">ID</option>
+                    <option value="Loan Application">Loan Application</option>
+                    <option value="OFAC">OFAC</option>
+                    <option value="FICO">FICO</option>
+                    <option value="Background">Background</option>
+                    <option value="Appraisal">Appraisal</option>
+                    <option value="Flood Cert">Flood Cert</option>
+                    <option value="PEXP">PEXP</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="file">Choose file:</label><br>
+                <body>Accepted file formats: .jpg, .png, .jpeg, .pdf</body>
+                <input type="file" id="file" name="file" accept=".jpg, .png, .jpeg, .pdf" required>
+
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </body>
+</html>

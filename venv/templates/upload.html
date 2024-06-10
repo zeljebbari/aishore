@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <html> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document Upload</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1>Upload Document</h1>
+            <p>Click on the "Choose File" button to upload a file:</p>
+            
+            <form action="/upload" method = "post", enctype="multipart/form-data">
+                <label for = 'entity_name'>Entity Name: </label>
+                <input type = 'text' id = 'entity_name' name = 'entity_name' required><br>
+                <!-- <label for = 'entity_f_name'>Entity First Name: </label>
+                <input type = 'text' id = 'entity_f_name' name = 'entity_f_name' required><br>
+                <label for = 'entity_l_name'>Entity Last Name: </label>
+                <input type = 'text' id = 'entity_l_name' name = 'entity_l_name' required><br> -->
+
+                <label for = 'borrower_name'>Borrower Name: </label>
+                <input type = 'text' id = 'borrower_name' name = 'borrower_name' required><br>
+                <!-- <label for = 'borrower_f_name'>Borrower First Name: </label>
+                <input type = 'text' id = 'borrower_f_name' name = 'borrower_f_name' required><br>
+                <label for = 'borrower_l_name'>Borrower Last Name: </label>
+                <input type = 'text' id = 'borrower_l_name' name = 'borrower_l_name' required><br> -->
+
+                <label for = 'doc_type'>Document Type:</label>
+                <select id="doc_type" name="doc_type" required>
+                    <option value="" disabled selected>Select document type</option>
+                    <option value="ID">ID</option>
+                    <!-- <option value="ID_driver_license">ID: Driver's License</option>
+                    <option value="ID_passport">ID: Passport</option>
+                    <option value="ID_ITIN">ID: ITIN</option>
+                    <option value="ID_resident_alien_card">ID: Resident Alien Card</option> -->
+                    <option value="Loan Application">Loan Application</option>
+                    <option value="OFAC">OFAC</option>
+                    <option value="FICO">FICO</option>
+                    <option value="Background">Background</option>
+                    <option value="Appraisal">Appraisal</option>
+                    <option value="Flood Cert">Flood Cert</option>
+                    <option value="PEXP">PEXP</option>
+                    <option value="Other">Other</option>
+                </select><br><br>
+                <input type="text" id="other_doc_type" name="other_doc_type" placeholder="Specify document type"><br><br>
+                <label for="file">Choose file:</label><br>
+                <body>Accepted file formats: .jpg, .png, .jpeg, .pdf</body>
+
+                <input 
+                type="file" 
+                id="file" 
+                name="file" 
+                accept=".jpg, .png, .jpeg, .pdf" 
+                required><br><br>
+                <!-- <input type="submit"> -->
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    <script>
+        function handleDocTypeOther(selectElement){
+            var otherTextBox = document.getElementById('other_type');
+            if (selectElement.value === "Other"){
+                otherTextBox.style.display='block';
+                otherTextBox.required=true;
+            }
+            else {
+                otherTextBox.style.display='none';
+                otherTextBox.required= false;
+            }
+        }
+    </script>
+    </body>
+</html>
+
