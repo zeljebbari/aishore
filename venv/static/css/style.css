@@ -60,6 +60,6 @@ button:hover {
     margin-top: 10px;
 }
 
-#other_type {
+#other_doc_type, #other_doc_type_note {
     display: none;
 }
