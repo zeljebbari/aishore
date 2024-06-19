@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('/static/fonts/Avenir-Regular.ttf') format('truetype'),
+         url('/static/fonts/Avenir-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, input, button {
+    font-family: 'Avenir', sans-serif;
+}
