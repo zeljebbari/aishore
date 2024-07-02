@@ -19,9 +19,7 @@
 						"type": "XmlSource",
 						"storeSettings": {
 							"type": "HttpReadSettings",
-							"requestMethod": "GET",
-							"additionalHeaders": "SDN_ENHANCED.XML",
-							"requestTimeout": ""
+							"requestMethod": "GET"
 						},
 						"formatSettings": {
 							"type": "XmlReadSettings",
