@@ -3,12 +3,12 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data weekly upload",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "0.00:10:00",
-					"retry": 1,
+					"timeout": "0.12:00:00",
+					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -27,28 +27,11 @@
 							"namespaces": true
 						}
 					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "Xml1",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "enhanced_sdnlist_csv",
 						"type": "DatasetReference"
 					}
 				]
