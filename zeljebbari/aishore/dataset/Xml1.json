@@ -2,7 +2,7 @@
 	"name": "Xml1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HttpServer enhanced",
+			"referenceName": "HttpServerEnhanced",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

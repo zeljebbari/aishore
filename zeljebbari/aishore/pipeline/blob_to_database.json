@@ -1,6 +1,7 @@
 {
-	"name": "pipeline1",
+	"name": "blob_to_database",
 	"properties": {
+		"description": "This is a pipeline for the XML enhanced document from blob storage to the aishore-dev",
 		"activities": [
 			{
 				"name": "Copy data1",
@@ -18,8 +19,9 @@
 					"source": {
 						"type": "XmlSource",
 						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "GET"
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
 							"type": "XmlReadSettings",
@@ -28,27 +30,22 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "Xml1",
+						"referenceName": "sdn_enhanced2",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "enhancedcsv",
+						"referenceName": "Binary1",
 						"type": "DatasetReference"
 					}
 				]
