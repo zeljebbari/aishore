@@ -1,0 +1,316 @@
+{
+	"name": "Copy Enhanced XML to Compliance Table",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_dv8",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "aishore-dev//sdn_enhanced (2).xml"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.Entity_compliance_checks"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "XmlSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "XmlReadSettings",
+							"validationMode": "none"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['sanctionsData']['publicationInfo']['dataAsOf']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['publicationInfo']['filters']['sanctionsLists']['sanctionsList']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['publicationInfo']['filters']['sanctionsLists']['sanctionsList']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['referenceValues']['referenceValue'][0]['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['referenceValues']['referenceValue'][0]['value']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['referenceValues']['referenceValue'][0]['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['featureTypes']['featureType'][0]['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['featureTypes']['featureType'][0]['detailType']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['featureTypes']['featureType'][0]['detailType']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['featureTypes']['featureType'][0]['publishExclude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['featureTypes']['featureType'][0]['@featureTypeId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['generalInfo']['identityId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['generalInfo']['entityType']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['generalInfo']['entityType']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsLists']['sanctionsList']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsLists']['sanctionsList']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsLists']['sanctionsList']['@datePublished']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsLists']['sanctionsList']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsPrograms']['sanctionsProgram']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsPrograms']['sanctionsProgram']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsPrograms']['sanctionsProgram']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsTypes']['sanctionsType']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsTypes']['sanctionsType']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['sanctionsTypes']['sanctionsType']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['legalAuthorities']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['isPrimary']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['isLowQuality']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['isPrimary']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['script']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['script']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['formattedLastName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['formattedFullName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['nameParts']['namePart']['type']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['nameParts']['namePart']['type']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['nameParts']['namePart']['value']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['nameParts']['namePart']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['translations']['translation']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['names']['name'][0]['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['country']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['country']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['isPrimary']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['script']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['script']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['addressParts']['addressPart']['type']['@refId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['addressParts']['addressPart']['type']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['addressParts']['addressPart']['value']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['addressParts']['addressPart']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['translations']['translation']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['addresses']['address']['@id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sanctionsData']['entities']['entity'][0]['@id']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_dv8",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_dv8",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
