@@ -31,7 +31,94 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['metadata']['url']"
+								},
+								"sink": {
+									"name": "URL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['borrower_first_name']"
+								},
+								"sink": {
+									"name": "First_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['borrower_last_name']"
+								},
+								"sink": {
+									"name": "Last_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['doc_type']"
+								},
+								"sink": {
+									"name": "Document_Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['timestamp']"
+								},
+								"sink": {
+									"name": "Time",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key_value_pairs'][0]['key']"
+								},
+								"sink": {
+									"name": "Pair_Key",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key_value_pairs'][0]['value']"
+								},
+								"sink": {
+									"name": "Pair_Value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key_value_pairs'][0]['confidence']"
+								},
+								"sink": {
+									"name": "Confidence",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key_value_pairs'][0]['page_number']"
+								},
+								"sink": {
+									"name": "Page",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
 				},
 				"inputs": [
 					{
