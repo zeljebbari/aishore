@@ -117,7 +117,7 @@
 								}
 							}
 						],
-						"collectionReference": ""
+						"collectionReference": "$['key_value_pairs']"
 					}
 				},
 				"inputs": [
