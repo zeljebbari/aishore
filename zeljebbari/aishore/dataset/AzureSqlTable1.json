@@ -1,0 +1,68 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Document_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DocumentType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "URL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EntityName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PairKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PairValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Page",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Confidence",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Time",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ID_Dim"
+		}
+	}
+}

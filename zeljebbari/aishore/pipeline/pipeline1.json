@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "blob to database OFAC",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,39 +16,110 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "XmlSource",
+						"type": "JsonSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "XmlReadSettings",
-							"validationMode": "none",
-							"namespaces": true
+							"type": "JsonReadSettings"
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "PreserveHierarchy"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['metadata']['url']"
+								},
+								"sink": {
+									"path": "$['metadata']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['borrower_first_name']"
+								},
+								"sink": {
+									"path": "$['metadata']['index_tags']['borrower_first_name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['borrower_last_name']"
+								},
+								"sink": {
+									"path": "$['metadata']['index_tags']['borrower_last_name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['doc_type']"
+								},
+								"sink": {
+									"path": "$['metadata']['index_tags']['doc_type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['metadata']['index_tags']['timestamp']"
+								},
+								"sink": {
+									"path": "$['metadata']['index_tags']['timestamp']"
+								}
+							},
+							{
+								"source": {
+									"path": "Key"
+								},
+								"sink": {
+									"path": "$['key_value_pairs'][0]['key']"
+								}
+							},
+							{
+								"source": {
+									"path": "Value"
+								},
+								"sink": {
+									"path": "$['key_value_pairs'][0]['value']"
+								}
+							},
+							{
+								"source": {
+									"path": "Confidence"
+								},
+								"sink": {
+									"path": "$['key_value_pairs'][0]['confidence']"
+								}
+							},
+							{
+								"source": {
+									"path": "Page"
+								},
+								"sink": {
+									"path": "$['key_value_pairs'][0]['page_number']"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "ofac_enhanced",
+						"referenceName": "Json1",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Json1",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				]

@@ -10,229 +10,53 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "xmltojson.json",
-				"container": "aishore-dev"
+				"container": "json"
 			}
 		},
 		"schema": {
 			"type": "object",
 			"properties": {
-				"sanctionsData": {
+				"metadata": {
 					"type": "object",
 					"properties": {
-						"publicationInfo": {
+						"url": {
+							"type": "string"
+						},
+						"index_tags": {
 							"type": "object",
 							"properties": {
-								"dataAsOf": {
+								"borrower_first_name": {
 									"type": "string"
 								},
-								"filters": {
-									"type": "object",
-									"properties": {
-										"sanctionsLists": {
-											"type": "object",
-											"properties": {
-												"sanctionsList": {
-													"type": "string"
-												}
-											}
-										}
-									}
+								"borrower_last_name": {
+									"type": "string"
+								},
+								"doc_type": {
+									"type": "string"
+								},
+								"timestamp": {
+									"type": "string"
 								}
 							}
-						},
-						"referenceValues": {
-							"type": "object",
-							"properties": {
-								"referenceValue": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"type": {
-												"type": "string"
-											},
-											"value": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							}
-						},
-						"featureTypes": {
-							"type": "object",
-							"properties": {
-								"featureType": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"type": {
-												"type": "string"
-											},
-											"detailType": {
-												"type": "string"
-											},
-											"publishExclude": {
-												"type": "boolean"
-											}
-										}
-									}
-								}
-							}
-						},
-						"entities": {
-							"type": "object",
-							"properties": {
-								"entity": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"generalInfo": {
-												"type": "object",
-												"properties": {
-													"identityId": {
-														"type": "integer"
-													},
-													"entityType": {
-														"type": "string"
-													}
-												}
-											},
-											"sanctionsLists": {
-												"type": "object",
-												"properties": {
-													"sanctionsList": {
-														"type": "string"
-													}
-												}
-											},
-											"sanctionsPrograms": {
-												"type": "object",
-												"properties": {
-													"sanctionsProgram": {
-														"type": "string"
-													}
-												}
-											},
-											"sanctionsTypes": {
-												"type": "object",
-												"properties": {
-													"sanctionsType": {
-														"type": "string"
-													}
-												}
-											},
-											"legalAuthorities": {
-												"type": "string"
-											},
-											"names": {
-												"type": "object",
-												"properties": {
-													"name": {
-														"type": "array",
-														"items": {
-															"type": "object",
-															"properties": {
-																"isPrimary": {
-																	"type": "boolean"
-																},
-																"isLowQuality": {
-																	"type": "boolean"
-																},
-																"translations": {
-																	"type": "object",
-																	"properties": {
-																		"translation": {
-																			"type": "object",
-																			"properties": {
-																				"isPrimary": {
-																					"type": "boolean"
-																				},
-																				"script": {
-																					"type": "string"
-																				},
-																				"formattedLastName": {
-																					"type": "string"
-																				},
-																				"formattedFullName": {
-																					"type": "string"
-																				},
-																				"nameParts": {
-																					"type": "object",
-																					"properties": {
-																						"namePart": {
-																							"type": "object",
-																							"properties": {
-																								"type": {
-																									"type": "string"
-																								},
-																								"value": {
-																									"type": "string"
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											},
-											"addresses": {
-												"type": "object",
-												"properties": {
-													"address": {
-														"type": "object",
-														"properties": {
-															"country": {
-																"type": "string"
-															},
-															"translations": {
-																"type": "object",
-																"properties": {
-																	"translation": {
-																		"type": "object",
-																		"properties": {
-																			"isPrimary": {
-																				"type": "boolean"
-																			},
-																			"script": {
-																				"type": "string"
-																			},
-																			"addressParts": {
-																				"type": "object",
-																				"properties": {
-																					"addressPart": {
-																						"type": "object",
-																						"properties": {
-																							"type": {
-																								"type": "string"
-																							},
-																							"value": {
-																								"type": "string"
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
+						}
+					}
+				},
+				"key_value_pairs": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"type": "string"
+							},
+							"value": {
+								"type": "string"
+							},
+							"confidence": {
+								"type": "number"
+							},
+							"page_number": {
+								"type": "integer"
 							}
 						}
 					}
