@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "2024-07-05_071841_1_-_Borrower_ID_-_Drew_Conlin_-_8-14-27_-190_7th_St_Salem_NJ_08079.json",
 				"container": "json"
 			}
 		},

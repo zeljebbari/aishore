@@ -1,0 +1,25 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/json/blobs/",
+			"blobPathEndsWith": ".json",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/8019d2a2-dccb-495f-a414-25df2b96b79e/resourceGroups/Aishore/providers/Microsoft.Storage/storageAccounts/aishorestaging",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
