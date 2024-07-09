@@ -1,0 +1,243 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "xmltojson.json",
+				"container": "aishore-dev"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sanctionsData": {
+					"type": "object",
+					"properties": {
+						"publicationInfo": {
+							"type": "object",
+							"properties": {
+								"dataAsOf": {
+									"type": "string"
+								},
+								"filters": {
+									"type": "object",
+									"properties": {
+										"sanctionsLists": {
+											"type": "object",
+											"properties": {
+												"sanctionsList": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"referenceValues": {
+							"type": "object",
+							"properties": {
+								"referenceValue": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"type": {
+												"type": "string"
+											},
+											"value": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						},
+						"featureTypes": {
+							"type": "object",
+							"properties": {
+								"featureType": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"type": {
+												"type": "string"
+											},
+											"detailType": {
+												"type": "string"
+											},
+											"publishExclude": {
+												"type": "boolean"
+											}
+										}
+									}
+								}
+							}
+						},
+						"entities": {
+							"type": "object",
+							"properties": {
+								"entity": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"generalInfo": {
+												"type": "object",
+												"properties": {
+													"identityId": {
+														"type": "integer"
+													},
+													"entityType": {
+														"type": "string"
+													}
+												}
+											},
+											"sanctionsLists": {
+												"type": "object",
+												"properties": {
+													"sanctionsList": {
+														"type": "string"
+													}
+												}
+											},
+											"sanctionsPrograms": {
+												"type": "object",
+												"properties": {
+													"sanctionsProgram": {
+														"type": "string"
+													}
+												}
+											},
+											"sanctionsTypes": {
+												"type": "object",
+												"properties": {
+													"sanctionsType": {
+														"type": "string"
+													}
+												}
+											},
+											"legalAuthorities": {
+												"type": "string"
+											},
+											"names": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"isPrimary": {
+																	"type": "boolean"
+																},
+																"isLowQuality": {
+																	"type": "boolean"
+																},
+																"translations": {
+																	"type": "object",
+																	"properties": {
+																		"translation": {
+																			"type": "object",
+																			"properties": {
+																				"isPrimary": {
+																					"type": "boolean"
+																				},
+																				"script": {
+																					"type": "string"
+																				},
+																				"formattedLastName": {
+																					"type": "string"
+																				},
+																				"formattedFullName": {
+																					"type": "string"
+																				},
+																				"nameParts": {
+																					"type": "object",
+																					"properties": {
+																						"namePart": {
+																							"type": "object",
+																							"properties": {
+																								"type": {
+																									"type": "string"
+																								},
+																								"value": {
+																									"type": "string"
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"addresses": {
+												"type": "object",
+												"properties": {
+													"address": {
+														"type": "object",
+														"properties": {
+															"country": {
+																"type": "string"
+															},
+															"translations": {
+																"type": "object",
+																"properties": {
+																	"translation": {
+																		"type": "object",
+																		"properties": {
+																			"isPrimary": {
+																				"type": "boolean"
+																			},
+																			"script": {
+																				"type": "string"
+																			},
+																			"addressParts": {
+																				"type": "object",
+																				"properties": {
+																					"addressPart": {
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
