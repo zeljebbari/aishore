@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: aishoredev.azurecr.io/flask-app:latest
+        volumeMounts:
+        - name: my-azure-kv-volume
+          mountPath: /mnt/secrets-store
+          readOnly: true
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        env:
+        - name: connect_str
+          valueFrom: 
+            secretKeyRef:
+              name: azure-kvs
+              key: blob-storage-connect-string
+        - name: connect_key
+          valueFrom: 
+            secretKeyRef:
+              name: azure-kvs
+              key: blob-storage-connect-key
+        - name: connectionString
+          valueFrom: 
+            secretKeyRef:
+              name: azure-kvs
+              key: sql-database-connect-string
+        - name: AZURE_CLIENT_ID
+          value: "ac047e2f-e290-4041-9312-2e452303bb11"
+      volumes:
+      - name: my-azure-kv-volume
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-kv"
